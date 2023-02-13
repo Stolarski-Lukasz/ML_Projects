@@ -1,3 +1,5 @@
+# To use these settings, copy them to "settings.py" 
+
 # data settings
 DATA = "data/cardinal_vowels_data.csv"
 MODEL_TYPE = "regression"

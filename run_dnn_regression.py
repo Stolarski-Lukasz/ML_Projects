@@ -6,25 +6,25 @@ from keras.layers.core import Dense
 from keras.optimizers import Adam
 
 
-# In the code below, comment out the lines that you currently do not need
+# In the code below, comment out the lines you currently do not need
 if __name__ == "__main__":
     # data processing
     #################
-    data_processor = DataProcessor()
-    data_processor.process_data(s.DATA)
+    data_processor = DataProcessor(s.DATA)
+    data_processor.prepare_data(model_type="regression")
 
     # model building
     ################
     model = Sequential()
-    model.add(Dense(s.number_of_neurons, input_dim=data_processor.number_of_features, activation='relu'))
-    model.add(Dense(s.number_of_neurons, activation='relu'))
+    model.add(Dense(s.N_NEURONS, input_dim=data_processor.n_features, activation='relu'))
+    model.add(Dense(s.N_NEURONS, activation='relu'))
     model.add(Dense(1, activation='linear'))
-    model.compile(Adam(lr=s.lr), loss='mean_squared_error', metrics=['mae'])
+    model.compile(Adam(lr=s.LR), loss='mean_squared_error', metrics=['mae'])
 
     # model evaluation
     ##################
     model_evaluator = DeepModelEvaluator(data_processor, model)
-    # model_evaluator.validate_model_single_fold()
+    # model_evaluator.validate_model_single_fold(is_train_test_split=False)
     model_evaluator.validate_model_k_fold()
     # model_evaluator.test_model()
 
