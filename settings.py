@@ -1,8 +1,8 @@
 # data settings
 DATA = "data/cardinal_vowels_data.csv"
-MODEL_TYPE = "regression"
+MODEL_TYPE = "classification"
 X = ['log_f1_sr', 'log_f2_f1', 'log_f3_f2']
-y = 'y_coordinates'
+y = 'vowel'
 TEST_SIZE = 0.2
 
 # evaluation settings

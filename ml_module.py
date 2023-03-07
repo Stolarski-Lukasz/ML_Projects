@@ -62,6 +62,18 @@ class DataProcessor(IDataProcessor):
             raise ValueError('model_type can only be either "classification" or "regression"')
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=s.TEST_SIZE)
 
+
+class SklDataProcessor(IDataProcessor):
+
+    def __init__(self, data):
+        super().__init__(data)
+
+    def prepare_data(self, model_type):
+        self.X = self.data[s.X]
+        self.y = self.data[s.y]
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=s.TEST_SIZE)
+
+
     
         
 
